@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LMG General Contractors | Houston, Texas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --orange: #ff5e14;
+    --black: #111111;
+    --dark: #1c1c1c;
+    --gray: #6b6b6b;
+    --light: #f7f7f5;
+    --white: #ffffff;
+    --border: #e0e0e0;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--black); background: var(--white); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 72px;
+  }
+  .nav-logo { display: flex; flex-direction: column; text-decoration: none; }
+  .nav-logo-main { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 0.08em; color: var(--black); line-height: 1; }
+  .nav-logo-sub { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-top: 2px; }
+  .nav-links { display: flex; align-items: center; gap: 40px; }
+  .nav-links a { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; text-decoration: none; color: var(--black); transition: color .2s; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-cta { background: var(--black); color: var(--white); padding: 10px 22px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; text-decoration: none; transition: background .2s; }
+  .nav-cta:hover { background: var(--orange); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--black); transition: all .3s; }
+  .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: var(--white); z-index: 99; flex-direction: column; padding: 48px; gap: 32px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-size: 28px; font-family: 'Playfair Display', serif; color: var(--black); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+
+  /* ── HERO ── */
+  .hero {
+    height: 100vh; min-height: 700px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 64px 80px 72px;
+    background: var(--white);
+  }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 28px; }
+  .hero-h1 { font-family: 'Playfair Display', serif; font-size: clamp(42px, 5vw, 72px); font-weight: 700; line-height: 1.1; color: var(--black); margin-bottom: 28px; }
+  .hero-h1 em { font-style: italic; color: var(--orange); }
+  .hero-sub { font-size: 16px; line-height: 1.7; color: var(--gray); max-width: 440px; margin-bottom: 44px; font-weight: 300; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: var(--black); color: var(--white); padding: 16px 32px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; text-decoration: none; transition: background .2s; display: inline-block; }
+  .btn-primary:hover { background: var(--orange); }
+  .btn-outline { border: 1.5px solid var(--black); color: var(--black); padding: 16px 32px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; text-decoration: none; transition: all .2s; display: inline-block; }
+  .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: linear-gradient(145deg, #2c3e50 0%, #4a6741 40%, #8b7355 70%, #2c3e50 100%);
+  }
+  .hero-img-overlay {
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-badge {
+    position: absolute; bottom: 40px; left: 40px;
+    background: rgba(255,255,255,0.12); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white; padding: 20px 28px;
+  }
+  .hero-badge-num { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; line-height: 1; }
+  .hero-badge-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.8; margin-top: 4px; }
+  .hero-tag {
+    position: absolute; top: 40px; right: 40px;
+    background: var(--orange); color: white;
+    padding: 10px 18px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700;
+  }
+
+  /* ── STATS ── */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--black); }
+  .stat { padding: 44px 40px; border-right: 1px solid rgba(255,255,255,0.1); text-align: center; }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; color: var(--white); line-height: 1; }
+  .stat-num span { color: var(--orange); }
+  .stat-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 8px; }
+
+  /* ── SECTION HEADERS ── */
+  section { padding: 100px 72px; }
+  .section-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 16px; }
+  .section-h2 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 700; line-height: 1.15; color: var(--black); }
+  .section-sub { font-size: 16px; line-height: 1.7; color: var(--gray); max-width: 520px; margin-top: 16px; font-weight: 300; }
+  .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; gap: 40px; }
+  .section-header-left { flex: 1; }
+  .view-all { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; color: var(--black); text-decoration: none; border-bottom: 1.5px solid var(--black); padding-bottom: 2px; white-space: nowrap; transition: color .2s, border-color .2s; }
+  .view-all:hover { color: var(--orange); border-color: var(--orange); }
+
+  /* ── PROJECTS ── */
+  .projects { background: var(--white); }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .project-card { position: relative; overflow: hidden; aspect-ratio: 4/5; cursor: pointer; }
+  .project-card:first-child { grid-column: span 2; aspect-ratio: auto; min-height: 480px; }
+  .pc-bg { position: absolute; inset: 0; transition: transform .5s ease; }
+  .project-card:hover .pc-bg { transform: scale(1.04); }
+  .pc-1 { background: linear-gradient(160deg, #1a2a3a 0%, #2d4a3e 50%, #1a2a3a 100%); }
+  .pc-2 { background: linear-gradient(160deg, #3d2b1f 0%, #5c4033 50%, #8b6347 100%); }
+  .pc-3 { background: linear-gradient(160deg, #1f2d3d 0%, #2e4057 50%, #3d5a7a 100%); }
+  .pc-4 { background: linear-gradient(160deg, #2d3d2b 0%, #3f5538 50%, #2d3d2b 100%); }
+  .pc-5 { background: linear-gradient(160deg, #3d2d1a 0%, #5a4020 50%, #8b6030 100%); }
+  .pc-6 { background: linear-gradient(160deg, #2a1f3d 0%, #3d2d5a 50%, #2a1f3d 100%); }
+  .pc-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%); }
+  .pc-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px; color: white; }
+  .pc-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); font-weight: 700; margin-bottom: 8px; }
+  .pc-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; line-height: 1.2; }
+  .pc-loc { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 6px; letter-spacing: 0.06em; }
+
+  /* ── SERVICES ── */
+  .services { background: var(--light); }
+  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); margin-top: 56px; }
+  .service-card { background: var(--white); padding: 44px 36px; transition: box-shadow .3s; }
+  .service-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); position: relative; z-index: 1; }
+  .svc-icon { width: 48px; height: 48px; margin-bottom: 28px; }
+  .svc-accent { width: 32px; height: 3px; background: var(--orange); margin-bottom: 20px; }
+  .svc-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; margin-bottom: 14px; color: var(--black); }
+  .svc-desc { font-size: 14px; line-height: 1.7; color: var(--gray); font-weight: 300; }
+
+  /* ── BRANDS ── */
+  .brands { padding: 60px 72px; background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .brands-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray); margin-bottom: 32px; text-align: center; }
+  .brands-row { display: flex; align-items: center; justify-content: center; gap: 64px; flex-wrap: wrap; }
+  .brand-name { font-size: 18px; font-weight: 700; letter-spacing: 0.04em; color: #c0c0c0; transition: color .2s; font-family: 'Inter', sans-serif; }
+  .brand-name:hover { color: var(--black); }
+
+  /* ── ABOUT ── */
+  .about { background: var(--white); display: grid !important; grid-template-columns: 1fr 1fr; gap: 0; padding: 0 !important; }
+  .about-left { padding: 100px 72px; }
+  .about-right {
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 30%, #4a6741 70%, #8b7355 100%);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 64px;
+  }
+  .about-quote { font-family: 'Playfair Display', serif; font-size: 28px; font-style: italic; color: white; line-height: 1.4; margin-bottom: 24px; }
+  .about-quote-attr { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+  .about-quote-attr strong { color: var(--orange); }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 48px; }
+  .about-stat { border-left: 3px solid var(--orange); padding-left: 20px; }
+  .about-stat-num { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--black); line-height: 1; }
+  .about-stat-label { font-size: 12px; color: var(--gray); margin-top: 4px; letter-spacing: 0.04em; }
+  .credentials { margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .credentials-title { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray); margin-bottom: 16px; }
+  .cred-items { display: flex; flex-direction: column; gap: 10px; }
+  .cred-item { font-size: 14px; color: var(--black); display: flex; align-items: center; gap: 10px; }
+  .cred-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; flex-shrink: 0; }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--orange); padding: 100px 72px !important;
+    display: flex !important; align-items: center; justify-content: space-between; gap: 40px;
+  }
+  .cta-left { flex: 1; }
+  .cta-h2 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 4vw, 60px); font-weight: 700; color: white; line-height: 1.1; }
+  .cta-sub { font-size: 17px; color: rgba(255,255,255,0.85); margin-top: 16px; font-weight: 300; }
+  .cta-right { flex-shrink: 0; }
+  .btn-white { background: white; color: var(--black); padding: 18px 40px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; text-decoration: none; transition: background .2s, color .2s; display: inline-block; }
+  .btn-white:hover { background: var(--black); color: white; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--black); color: white; padding: 72px 72px 40px; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 64px; margin-bottom: 60px; }
+  .footer-brand-name { font-weight: 700; font-size: 16px; letter-spacing: 0.08em; }
+  .footer-brand-sub { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); margin-top: 2px; }
+  .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.45); margin-top: 20px; line-height: 1.6; max-width: 280px; }
+  .footer-col-title { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; font-weight: 600; }
+  .footer-links { display: flex; flex-direction: column; gap: 12px; }
+  .footer-links a { font-size: 14px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: white; }
+  .footer-contact p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+  .footer-contact strong { color: white; display: block; margin-top: 8px; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.35); }
+  .footer-legal { display: flex; gap: 28px; }
+  .footer-legal a { font-size: 12px; color: rgba(255,255,255,0.35); text-decoration: none; }
+
+  /* ── FADE IN ── */
+  .fade { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+  .fade.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    nav { padding: 0 28px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero { grid-template-columns: 1fr; height: auto; }
+    .hero-left { padding: 60px 28px; }
+    .hero-right { height: 50vh; }
+    section { padding: 72px 28px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat { border-right: 1px solid rgba(255,255,255,0.1); }
+    .stat:nth-child(2) { border-right: none; }
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+    .project-card:first-child { grid-column: span 2; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .about { grid-template-columns: 1fr !important; }
+    .about-left { padding: 72px 28px; }
+    .about-right { min-height: 360px; }
+    .brands { padding: 48px 28px; }
+    .brands-row { gap: 32px; }
+    .cta-section { flex-direction: column !important; padding: 72px 28px !important; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    footer { padding: 60px 28px 32px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+  @media (max-width: 640px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card:first-child { grid-column: span 1; min-height: 320px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about-stats { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    .section-header { flex-direction: column; align-items: flex-start; }
+    .stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-main">LMG</span>
+    <span class="nav-logo-sub">General Contractors</span>
+  </a>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#projects" onclick="toggleMenu()">Projects</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Est. 2001 · Houston, Texas</p>
+    <h1 class="hero-h1">Building Texas<br>One <em>Landmark</em><br>at a Time.</h1>
+    <p class="hero-sub">Commercial construction firm specializing in hospitality, retail, and mixed-use development across 11 Texas markets.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View Our Work</a>
+      <a href="#contact" class="btn-outline">Start a Project</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-overlay"></div>
+    <div class="hero-tag">Now Building in Houston</div>
+    <div class="hero-badge">
+      <div class="hero-badge-num">100+</div>
+      <div class="hero-badge-label">Projects Completed</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat fade">
+    <div class="stat-num">25<span>+</span></div>
+    <div class="stat-label">Years in Business</div>
+  </div>
+  <div class="stat fade">
+    <div class="stat-num">$500<span>M+</span></div>
+    <div class="stat-label">Projects Delivered</div>
+  </div>
+  <div class="stat fade">
+    <div class="stat-num">11</div>
+    <div class="stat-label">Texas Markets</div>
+  </div>
+  <div class="stat fade">
+    <div class="stat-num">4</div>
+    <div class="stat-label">Core Sectors</div>
+  </div>
+</div>
+
+<!-- BRANDS -->
+<div class="brands fade">
+  <p class="brands-label">Trusted Construction Partner for Major Hospitality Flags</p>
+  <div class="brands-row">
+    <span class="brand-name">HILTON</span>
+    <span class="brand-name">MARRIOTT</span>
+    <span class="brand-name">IHG</span>
+    <span class="brand-name">HYATT</span>
+    <span class="brand-name">WYNDHAM</span>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-header fade">
+    <div class="section-header-left">
+      <p class="section-eyebrow">Our Work</p>
+      <h2 class="section-h2">Selected Projects</h2>
+    </div>
+    <a href="#contact" class="view-all">All Projects →</a>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card fade">
+      <div class="pc-bg pc-1"></div>
+      <div class="pc-overlay"></div>
+      <div class="pc-content">
+        <p class="pc-tag">Hospitality</p>
+        <h3 class="pc-title">StudioRES Hotel McAllen</h3>
+        <p class="pc-loc">McAllen, TX · 125 Keys · $22M</p>
+      </div>
+    </div>
+    <div class="project-card fade">
+      <div class="pc-bg pc-2"></div>
+      <div class="pc-overlay"></div>
+      <div class="pc-content">
+        <p class="pc-tag">Hospitality</p>
+        <h3 class="pc-title">Hampton Inn Development</h3>
+        <p class="pc-loc">Houston, TX · Full-Service Flag</p>
+      </div>
+    </div>
+    <div class="project-card fade">
+      <div class="pc-bg pc-3"></div>
+      <div class="pc-overlay"></div>
+      <div class="pc-content">
+        <p class="pc-tag">Retail</p>
+        <h3 class="pc-title">Del Rio Retail Pad</h3>
+        <p class="pc-loc">Del Rio, TX · 25,000 SF Ground-Up</p>
+      </div>
+    </div>
+    <div class="project-card fade">
+      <div class="pc-bg pc-4"></div>
+      <div class="pc-overlay"></div>
+      <div class="pc-content">
+        <p class="pc-tag">Mixed-Use</p>
+        <h3 class="pc-title">Laredo Mixed-Use Center</h3>
+        <p class="pc-loc">Laredo, TX · Retail + Hospitality</p>
+      </div>
+    </div>
+    <div class="project-card fade">
+      <div class="pc-bg pc-5"></div>
+      <div class="pc-overlay"></div>
+      <div class="pc-content">
+        <p class="pc-tag">Multifamily</p>
+        <h3 class="pc-title">Houston Multifamily</h3>
+        <p class="pc-loc">Houston, TX · Energy Corridor</p>
+      </div>
+    </div>
+    <div class="project-card fade">
+      <div class="pc-bg pc-6"></div>
+      <div class="pc-overlay"></div>
+      <div class="pc-content">
+        <p class="pc-tag">Historic Preservation</p>
+        <h3 class="pc-title">Historic Adaptive Reuse</h3>
+        <p class="pc-loc">San Antonio, TX · Mixed-Use</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header fade">
+    <div class="section-header-left">
+      <p class="section-eyebrow">What We Do</p>
+      <h2 class="section-h2">Our Services</h2>
+      <p class="section-sub">From concept to ribbon cutting — we manage every phase of your commercial construction project.</p>
+    </div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade">
+      <div class="svc-accent"></div>
+      <svg class="svc-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="28" width="36" height="4" fill="#ff5e14"/>
+        <rect x="12" y="16" width="24" height="12" stroke="#111" stroke-width="2"/>
+        <rect x="18" y="8" width="12" height="8" stroke="#111" stroke-width="2"/>
+        <rect x="8" y="32" width="6" height="8" fill="#111"/>
+        <rect x="34" y="32" width="6" height="8" fill="#111"/>
+        <rect x="20" y="34" width="8" height="6" fill="#ff5e14"/>
+      </svg>
+      <h3 class="svc-title">Ground-Up Construction</h3>
+      <p class="svc-desc">Full project delivery from site prep and foundation through final punch list. We self-perform critical trades and manage all subcontractors.</p>
+    </div>
+    <div class="service-card fade">
+      <div class="svc-accent"></div>
+      <svg class="svc-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="20" width="40" height="22" stroke="#111" stroke-width="2"/>
+        <path d="M4 20 L24 6 L44 20" stroke="#111" stroke-width="2"/>
+        <rect x="18" y="28" width="12" height="14" fill="#ff5e14"/>
+        <rect x="8" y="26" width="8" height="8" fill="#111" opacity="0.3"/>
+        <rect x="32" y="26" width="8" height="8" fill="#111" opacity="0.3"/>
+      </svg>
+      <h3 class="svc-title">Hotel Development & PIP</h3>
+      <p class="svc-desc">New builds and brand-mandated renovations for Hilton, Marriott, IHG, and Hyatt flags. Deep familiarity with PIP requirements and brand standards.</p>
+    </div>
+    <div class="service-card fade">
+      <div class="svc-accent"></div>
+      <svg class="svc-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="12" width="40" height="28" stroke="#111" stroke-width="2"/>
+        <rect x="4" y="8" width="40" height="4" fill="#ff5e14"/>
+        <line x1="16" y1="12" x2="16" y2="40" stroke="#111" stroke-width="1.5"/>
+        <line x1="32" y1="12" x2="32" y2="40" stroke="#111" stroke-width="1.5"/>
+        <rect x="8" y="20" width="6" height="8" fill="#111" opacity="0.3"/>
+        <rect x="20" y="20" width="8" height="8" fill="#ff5e14" opacity="0.6"/>
+        <rect x="34" y="20" width="6" height="8" fill="#111" opacity="0.3"/>
+      </svg>
+      <h3 class="svc-title">Retail & Commercial Buildout</h3>
+      <p class="svc-desc">Anchor tenant improvements, shell completions, and full retail center construction. From strip centers to mixed-use pads.</p>
+    </div>
+    <div class="service-card fade">
+      <div class="svc-accent"></div>
+      <svg class="svc-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 40 L8 16 Q8 8 16 8 L32 8 Q40 8 40 16 L40 40" stroke="#111" stroke-width="2"/>
+        <path d="M4 40 L44 40" stroke="#ff5e14" stroke-width="3"/>
+        <circle cx="24" cy="20" r="6" stroke="#111" stroke-width="2"/>
+        <path d="M14 40 L14 30 Q14 26 18 26 L30 26 Q34 26 34 30 L34 40" stroke="#111" stroke-width="1.5"/>
+      </svg>
+      <h3 class="svc-title">Historic Preservation</h3>
+      <p class="svc-desc">Adaptive reuse and restoration of historically significant structures. We honor the original architecture while delivering modern functionality.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about" id="about">
+  <div class="about-left fade">
+    <p class="section-eyebrow">About LMG</p>
+    <h2 class="section-h2">Texas Built.<br>Houston Proud.</h2>
+    <p class="section-sub" style="max-width:100%; margin-top:20px;">LMG General Contractors has been delivering exceptional commercial construction across Texas for over 25 years. We specialize in the projects others find complex — branded hotels, mixed-use developments, adaptive reuse, and fast-track retail builds in competitive markets.</p>
+    <p class="section-sub" style="max-width:100%; margin-top:16px;">As the construction arm of a vertically integrated real estate group, we bring unique deal perspective to every project. We don't just build — we understand the investment behind every wall we raise.</p>
+    <div class="about-stats">
+      <div class="about-stat">
+        <div class="about-stat-num">$22M</div>
+        <div class="about-stat-label">Largest Single Project</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">11</div>
+        <div class="about-stat-label">Active Texas Markets</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">100%</div>
+        <div class="about-stat-label">On-Time Delivery Rate</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">4</div>
+        <div class="about-stat-label">Major Brand Families</div>
+      </div>
+    </div>
+    <div class="credentials">
+      <p class="credentials-title">Credentials & Affiliations</p>
+      <div class="cred-items">
+        <div class="cred-item"><span class="cred-dot"></span> Licensed Texas General Contractor</div>
+        <div class="cred-item"><span class="cred-dot"></span> Adrian Ramirez, CCIM — Managing Principal</div>
+        <div class="cred-item"><span class="cred-dot"></span> MBA — Rice University</div>
+        <div class="cred-item"><span class="cred-dot"></span> Member: ICSC, HAR, NAR, TAR</div>
+        <div class="cred-item"><span class="cred-dot"></span> 845 Texas Ave, Ste 200, Houston, TX 77002</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="about-quote">"We build the projects that move markets — hotels, retail centers, mixed-use developments that define a city block for the next 30 years."</div>
+    <div class="about-quote-attr"><strong>Adrian Ramirez, CCIM</strong><br>Managing Principal, LMG General Contractors</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-left fade">
+    <h2 class="cta-h2">Ready to Break Ground?</h2>
+    <p class="cta-sub">Tell us about your project. We respond within 24 hours.</p>
+  </div>
+  <div class="cta-right fade">
+    <a href="mailto:adrian@lmg-gc.com" class="btn-white">Start a Conversation →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">LMG</div>
+      <div class="footer-brand-sub">General Contractors</div>
+      <p class="footer-tagline">Building Texas one landmark at a time. Hospitality, retail, and mixed-use construction since 2001.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Services</p>
+      <div class="footer-links">
+        <a href="#services">Ground-Up Construction</a>
+        <a href="#services">Hotel Development</a>
+        <a href="#services">Retail Buildout</a>
+        <a href="#services">Historic Preservation</a>
+      </div>
+    </div>
+    <div>
+      <p class="footer-col-title">Company</p>
+      <div class="footer-links">
+        <a href="#about">About Us</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="https://blackrockagent008.github.io/lmg-estimator/">Project Estimator</a>
+      </div>
+    </div>
+    <div class="footer-contact">
+      <p class="footer-col-title">Contact</p>
+      <p>845 Texas Ave, Ste 200<br>Houston, TX 77002</p>
+      <strong>(713) 932-8453</strong>
+      <strong>adrian@lmg-gc.com</strong>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 LMG General Contractors. All Rights Reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  // Close menu on outside click
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobileMenu');
+    const hamburger = document.getElementById('hamburger');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+  // Fade-in on scroll
+  const fades = document.querySelectorAll('.fade');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  fades.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
